@@ -12,10 +12,7 @@ function Layout() {
             <Stack
                 width={"100%"}
                 height={"100%"}
-                sx={{
-                    width: {sm: `calc(100% - ${drawerWidth}px)`},
-                    ml: {sm: `${drawerWidth}px`},
-                }}>
+                margin={2}>
                 <Outlet/>
             </Stack>
         </Stack>

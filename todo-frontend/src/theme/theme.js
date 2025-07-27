@@ -6,5 +6,8 @@ export const theme = createTheme({
         primary: {
             main: "#FFFAFA"
         }
+    },
+    typography: {
+        fontFamily: 'monospace'
     }
 })

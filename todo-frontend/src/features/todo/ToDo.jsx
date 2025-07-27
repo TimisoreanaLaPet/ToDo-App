@@ -1,8 +1,10 @@
+import {Stack, Typography} from "@mui/material";
+
 function ToDo() {
     return (
-        <div>
-            Toodoo
-        </div>
+        <Stack>
+            <Typography variant={"h4"} fontWeight={600} color={'#505050'}>To Do List</Typography>
+        </Stack>
     );
 }
 

@@ -20,35 +20,20 @@ function Sidebar({width}) {
     const navigate = useNavigate();
 
     return (
-        <Drawer
-            container={window.document.body}
-            variant="temporary"
-            open={true}
-            sx={{
-                '& .MuiBackdrop-root': {display: "none"},
-                '& .MuiDrawer-paper': {boxSizing: 'border-box', width: width},
-            }}
-            slotProps={{
-                root: {
-                    keepMounted: true,
-                },
-            }}
-        >
-            <Box>
-                <List>
-                    {navigationButtons.map(nav => (
-                        <ListItem key={nav.title} disablePadding>
-                            <ListItemButton onClick={() => navigate(nav.location)}>
-                                <ListItemIcon>
-                                    {nav.icon}
-                                </ListItemIcon>
-                                <ListItemText primary={nav.title} />
-                            </ListItemButton>
-                        </ListItem>
-                    ))}
-                </List>
-            </Box>
-        </Drawer>
+        <Box width={width} zIndex={1000} sx={{boxShadow: 10}}>
+            <List>
+                {navigationButtons.map(nav => (
+                    <ListItem key={nav.title} disablePadding>
+                        <ListItemButton onClick={() => navigate(nav.location)}>
+                            <ListItemIcon>
+                                {nav.icon}
+                            </ListItemIcon>
+                            <ListItemText primary={nav.title} />
+                        </ListItemButton>
+                    </ListItem>
+                ))}
+            </List>
+        </Box>
     );
 }
 
