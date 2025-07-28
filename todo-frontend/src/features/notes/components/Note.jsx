@@ -4,8 +4,11 @@ import NoteDetailsDialog from "./dialog/NoteDetailsDialog.jsx";
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import EditIcon from '@mui/icons-material/Edit';
 import EditNoteDialog from "./dialog/EditNoteDialog.jsx";
+import {useDeleteNoteMutation} from "../../../state/api.js";
 
 function Note({note}) {
+    const [deleteNote, {isLoading}] = useDeleteNoteMutation();
+
     const [openDetails, setOpenDetails] = useState(false)
     const [openEdit, setOpenEdit] = useState(false)
 
@@ -14,13 +17,18 @@ function Note({note}) {
         setOpenEdit(true)
     }
 
+    function handleDelete(e) {
+        e.stopPropagation()
+        deleteNote(note.id)
+    }
+
     return (
         <>
             <Card
                 sx={{
                     boxShadow: 5,
-                    width: 250,
-                    height: 250,
+                    width: 270,
+                    height: 270,
                     cursor: "pointer",
                     '&:hover': {
                         boxShadow: 10,
@@ -38,8 +46,8 @@ function Note({note}) {
                             <IconButton size="small" onClick={handleEdit}>
                                 <EditIcon fontSize="small"/>
                             </IconButton>
-                            <IconButton size="small">
-                                <DeleteOutlineIcon fontSize="small"/>
+                            <IconButton size="small" onClick={handleDelete} loading={isLoading}>
+                                <DeleteOutlineIcon fontSize="small" />
                             </IconButton>
                         </Stack>
                     </Stack>

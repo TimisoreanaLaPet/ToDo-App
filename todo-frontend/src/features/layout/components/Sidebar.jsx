@@ -1,4 +1,4 @@
-import {Box, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText} from "@mui/material";
+import {Box, List, ListItem, ListItemButton, ListItemIcon, ListItemText} from "@mui/material";
 import FormatListBulletedSharpIcon from '@mui/icons-material/FormatListBulletedSharp';
 import PostAddSharpIcon from '@mui/icons-material/PostAddSharp';
 import {useNavigate} from "react-router-dom";
@@ -20,7 +20,7 @@ function Sidebar({width}) {
     const navigate = useNavigate();
 
     return (
-        <Box width={width} zIndex={1000} sx={{boxShadow: 10}}>
+        <Box width={width} height={'100%'} zIndex={1000} sx={{boxShadow: 10}}>
             <List>
                 {navigationButtons.map(nav => (
                     <ListItem key={nav.title} disablePadding>

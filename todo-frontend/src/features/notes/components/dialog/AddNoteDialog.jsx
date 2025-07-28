@@ -1,12 +1,21 @@
 import {Button, Dialog, DialogActions, DialogContent, DialogTitle, Stack, TextField} from "@mui/material";
 import {useState} from "react";
+import {useCreateNoteMutation} from "../../../../state/api.js";
 
 function AddNoteDialog({open, onClose}) {
+    const [createNote, {isLoading}] = useCreateNoteMutation();
+
     const [title, setTitle] = useState("")
     const [content, setContent] = useState("")
 
-    function handleSubmit() {
-        console.log(title)
+    async function handleSubmit() {
+        await createNote({
+            title,
+            content,
+        }).unwrap()
+        setTitle("")
+        setContent("")
+        onClose()
     }
 
     return (
@@ -46,7 +55,7 @@ function AddNoteDialog({open, onClose}) {
             </DialogContent>
             <DialogActions>
                 <Button onClick={onClose} color={"black"}>Cancel</Button>
-                <Button variant={"contained"} onClick={handleSubmit}>Submit</Button>
+                <Button variant={"contained"} onClick={handleSubmit} loading={isLoading}>Submit</Button>
             </DialogActions>
         </Dialog>);
 }
